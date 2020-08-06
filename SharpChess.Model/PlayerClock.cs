@@ -31,6 +31,7 @@ namespace SharpChess.Model
 
     #endregion
 
+
     /// <summary>
     /// Player chess clock.
     /// </summary>
