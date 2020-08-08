@@ -884,6 +884,8 @@ namespace SharpChess.Model
         /// </summary>
         protected abstract void SetPiecesAtStartingPositions();
 
+        protected abstract void SetPiecesAtStartingPositionsRandom();
+
         #endregion
     }
 }
