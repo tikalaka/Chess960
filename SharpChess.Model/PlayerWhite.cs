@@ -23,6 +23,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
+using System;
+
 namespace SharpChess.Model
 {
     /// <summary>
@@ -40,7 +42,14 @@ namespace SharpChess.Model
             this.Colour = PlayerColourNames.White;
             this.Intellegence = PlayerIntellegenceNames.Human;
 
-            this.SetPiecesAtStartingPositions();
+            if (true)
+            {
+                this.SetPiecesAtStartingPositions();
+            }
+            else
+            {
+                this.SetPiecesAtStartingPositionsRandom();
+            }
         }
 
         #endregion
@@ -80,28 +89,71 @@ namespace SharpChess.Model
             }
         }
 
+        public static int[] usedPositions = {0,0,0,0,0,0,0,0};
+
         #endregion
 
         #region Methods
 
-        /// <summary>
-        /// The set pieces at starting positions.
-        /// </summary>
-        protected override sealed void SetPiecesAtStartingPositions()
+        public static int GetNewPosition(int min, int max)
         {
-            this.Pieces.Add(this.King = new Piece(Piece.PieceNames.King, this, 4, 0, Piece.PieceIdentifierCodes.WhiteKing));
+            Random rand = new Random();
+            bool done = false;
+            int newPos = 8;
+            do
+            {
+                newPos = rand.Next(min, max + 1);
+                if (usedPositions[newPos] == 0)
+                {
+                    usedPositions[newPos] = 1;
+                    done = true;
+                }
+            } while (!done);
+            return newPos;
+        }
 
-            this.Pieces.Add(new Piece(Piece.PieceNames.Queen, this, 3, 0, Piece.PieceIdentifierCodes.WhiteQueen));
+        public static int GetNewPositionBishop(bool even)
+        {
+            Random rand = new Random();
+            bool done = false;
+            int newPos = 8;
+            do
+            {
+                newPos = rand.Next(0, 8);
+                if (even && usedPositions[newPos] == 0 && newPos % 2 == 0)
+                {
+                    usedPositions[newPos] = 1;
+                    done = true;
+                }
+                else if (!even && usedPositions[newPos] == 0 && newPos % 2 == 1)
+                {
+                    usedPositions[newPos] = 1;
+                    done = true;
+                }
+            } while (!done);
+            return newPos;
+        }
 
-            this.Pieces.Add(new Piece(Piece.PieceNames.Rook, this, 0, 0, Piece.PieceIdentifierCodes.WhiteQueensRook));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Rook, this, 7, 0, Piece.PieceIdentifierCodes.WhiteKingsRook));
-
-            this.Pieces.Add(new Piece(Piece.PieceNames.Bishop, this, 2, 0, Piece.PieceIdentifierCodes.WhiteQueensBishop));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Bishop, this, 5, 0, Piece.PieceIdentifierCodes.WhiteKingsBishop));
-
-            this.Pieces.Add(new Piece(Piece.PieceNames.Knight, this, 1, 0, Piece.PieceIdentifierCodes.WhiteQueensKnight));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Knight, this, 6, 0, Piece.PieceIdentifierCodes.WhiteKingsKnight));
-
+        
+        protected override sealed void SetPiecesAtStartingPositionsRandom()
+        {
+            int kingPos = GetNewPosition(1, 6);            
+            this.Pieces.Add(this.King = new Piece(Piece.PieceNames.King, this, kingPos, 0, Piece.PieceIdentifierCodes.WhiteKing));
+            int rookLeftPos = GetNewPosition(0, kingPos - 1);
+            int rookRightPos = GetNewPosition(kingPos + 1, 7);
+            this.Pieces.Add(new Piece(Piece.PieceNames.Rook, this, rookLeftPos, 0, Piece.PieceIdentifierCodes.WhiteQueensRook));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Rook, this, rookRightPos, 0, Piece.PieceIdentifierCodes.WhiteKingsRook));
+            int bishopPosEven = GetNewPositionBishop(true);
+            int bishopPosOdd = GetNewPositionBishop(false);
+            this.Pieces.Add(new Piece(Piece.PieceNames.Bishop, this, bishopPosEven, 0, Piece.PieceIdentifierCodes.WhiteQueensBishop));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Bishop, this, bishopPosOdd, 0, Piece.PieceIdentifierCodes.WhiteKingsBishop));
+            int queenPos = GetNewPosition(0, 7);
+            this.Pieces.Add(new Piece(Piece.PieceNames.Queen, this, queenPos, 0, Piece.PieceIdentifierCodes.WhiteQueen));
+            int knight1Pos = GetNewPosition(1, 6);
+            int knight2Pos = GetNewPosition(1, 6);
+            this.Pieces.Add(new Piece(Piece.PieceNames.Knight, this, knight1Pos, 0, Piece.PieceIdentifierCodes.WhiteQueensKnight));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Knight, this, knight2Pos, 0, Piece.PieceIdentifierCodes.WhiteKingsKnight));
+            //PAWNS
             this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 0, 1, Piece.PieceIdentifierCodes.WhitePawn1));
             this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 1, 1, Piece.PieceIdentifierCodes.WhitePawn2));
             this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 2, 1, Piece.PieceIdentifierCodes.WhitePawn3));
@@ -111,30 +163,32 @@ namespace SharpChess.Model
             this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 6, 1, Piece.PieceIdentifierCodes.WhitePawn7));
             this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 7, 1, Piece.PieceIdentifierCodes.WhitePawn8));
         }
-
-        protected override sealed void SetPiecesAtStartingPositionsRandom()
+        /// <summary>
+        /// The set pieces at starting positions.
+        /// </summary>
+        protected override sealed void SetPiecesAtStartingPositions()
         {
-            this.Pieces.Add(this.King = new Piece(Piece.PieceNames.King, this, 4, 7, Piece.PieceIdentifierCodes.BlackKing));
+            this.Pieces.Add(this.King = new Piece(Piece.PieceNames.King, this, 4, 0, Piece.PieceIdentifierCodes.BlackKing));
 
-            this.Pieces.Add(new Piece(Piece.PieceNames.Queen, this, 3, 7, Piece.PieceIdentifierCodes.BlackQueen));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Queen, this, 3, 0, Piece.PieceIdentifierCodes.BlackQueen));
 
-            this.Pieces.Add(new Piece(Piece.PieceNames.Rook, this, 0, 7, Piece.PieceIdentifierCodes.BlackQueensRook));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Rook, this, 7, 7, Piece.PieceIdentifierCodes.BlackKingsRook));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Rook, this, 0, 0, Piece.PieceIdentifierCodes.BlackQueensRook));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Rook, this, 7, 0, Piece.PieceIdentifierCodes.BlackKingsRook));
 
-            this.Pieces.Add(new Piece(Piece.PieceNames.Bishop, this, 2, 7, Piece.PieceIdentifierCodes.BlackQueensBishop));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Bishop, this, 5, 7, Piece.PieceIdentifierCodes.BlackKingsBishop));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Bishop, this, 2, 0, Piece.PieceIdentifierCodes.BlackQueensBishop));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Bishop, this, 5, 0, Piece.PieceIdentifierCodes.BlackKingsBishop));
 
-            this.Pieces.Add(new Piece(Piece.PieceNames.Knight, this, 1, 7, Piece.PieceIdentifierCodes.BlackQueensKnight));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Knight, this, 6, 7, Piece.PieceIdentifierCodes.BlackKingsKnight));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Knight, this, 1, 0, Piece.PieceIdentifierCodes.BlackQueensKnight));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Knight, this, 6, 0, Piece.PieceIdentifierCodes.BlackKingsKnight));
 
-            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 0, 6, Piece.PieceIdentifierCodes.BlackPawn1));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 1, 6, Piece.PieceIdentifierCodes.BlackPawn2));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 2, 6, Piece.PieceIdentifierCodes.BlackPawn3));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 3, 6, Piece.PieceIdentifierCodes.BlackPawn4));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 4, 6, Piece.PieceIdentifierCodes.BlackPawn5));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 5, 6, Piece.PieceIdentifierCodes.BlackPawn6));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 6, 6, Piece.PieceIdentifierCodes.BlackPawn7));
-            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 7, 6, Piece.PieceIdentifierCodes.BlackPawn8));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 0, 1, Piece.PieceIdentifierCodes.BlackPawn1));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 1, 1, Piece.PieceIdentifierCodes.BlackPawn2));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 2, 1, Piece.PieceIdentifierCodes.BlackPawn3));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 3, 1, Piece.PieceIdentifierCodes.BlackPawn4));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 4, 1, Piece.PieceIdentifierCodes.BlackPawn5));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 5, 1, Piece.PieceIdentifierCodes.BlackPawn6));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 6, 1, Piece.PieceIdentifierCodes.BlackPawn7));
+            this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 7, 1, Piece.PieceIdentifierCodes.BlackPawn8));
         }
 
         #endregion
