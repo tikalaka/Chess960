@@ -1,0 +1,7 @@
+C:\GitHub\Chess960\SharpChess.Model\bin\Debug\SharpChess.Model.dll
+C:\GitHub\Chess960\SharpChess.Model\bin\Debug\SharpChess.Model.pdb
+C:\GitHub\Chess960\SharpChess.Model\bin\Debug\SharpChess.Model.XML
+C:\GitHub\Chess960\SharpChess.Model\obj\Debug\SharpChess.Model.csprojAssemblyReference.cache
+C:\GitHub\Chess960\SharpChess.Model\obj\Debug\SharpChess.Model.csproj.CoreCompileInputs.cache
+C:\GitHub\Chess960\SharpChess.Model\obj\Debug\SharpChess.Model.dll
+C:\GitHub\Chess960\SharpChess.Model\obj\Debug\SharpChess.Model.pdb
