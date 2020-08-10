@@ -1,0 +1,14 @@
+C:\GitHub\Chess960\SharpChess Game\bin\Release\SharpChess2.exe.config
+C:\GitHub\Chess960\SharpChess Game\bin\Release\SharpChess2.exe
+C:\GitHub\Chess960\SharpChess Game\bin\Release\SharpChess.Model.dll
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.csprojAssemblyReference.cache
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.frmAbout.resources
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.frmDifficulty.resources
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.frmMain.resources
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.frmMoveAnalysis.resources
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.frmPieceSelector.resources
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.frmWinBoard.resources
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.csproj.GenerateResource.cache
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.csproj.CoreCompileInputs.cache
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess.csproj.CopyComplete
+C:\GitHub\Chess960\SharpChess Game\obj\Release\SharpChess2.exe

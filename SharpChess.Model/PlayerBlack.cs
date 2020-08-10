@@ -50,7 +50,7 @@ namespace SharpChess.Model
             this.gameMode960On = gameMode960On;
             if (!gameMode960On)
             {
-                this.SetPiecesAtStartingPositions();
+                this.SetPiecesAtStartingPositionsRandom();
             }
             else
             {
@@ -141,7 +141,9 @@ namespace SharpChess.Model
             return newPos;
         }
 
-        
+        /// <summary>
+        /// 960 mode
+        /// </summary>
         protected override sealed void SetPiecesAtStartingPositionsRandom()
         {
             int kingPos = GetNewPosition(1, 6);
@@ -174,7 +176,7 @@ namespace SharpChess.Model
         /// <summary>
         /// The set pieces at starting positions.
         /// </summary>
-
+        /*
         protected override sealed void SetPiecesAtStartingPositions()
         {
             this.Pieces.Add(this.King = new Piece(Piece.PieceNames.King, this, 4, 7, Piece.PieceIdentifierCodes.BlackKing));
@@ -200,7 +202,7 @@ namespace SharpChess.Model
             this.Pieces.Add(new Piece(Piece.PieceNames.Pawn, this, 7, 6, Piece.PieceIdentifierCodes.BlackPawn8));
         }
 
-
+        */
         #endregion
     }
 }

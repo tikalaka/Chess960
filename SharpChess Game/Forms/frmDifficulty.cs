@@ -74,6 +74,10 @@ namespace SharpChess
         /// </summary>
         private CheckBox chkUseRandomOpeningMoves;
 
+        /// <summary>
+        /// Check box for 960
+        /// </summary>
+        private CheckBox checkBox1;
 
         /// <summary>
         /// The grp clock.
@@ -164,7 +168,7 @@ namespace SharpChess
         /// The rad level.
         /// </summary>
         private RadioButton radLevel;
-        private CheckBox checkBox1;
+        
 
         /// <summary>
         /// The trk level.
@@ -262,8 +266,8 @@ namespace SharpChess
             this.label5 = new System.Windows.Forms.Label();
             this.numMaximumSearchDepth = new System.Windows.Forms.NumericUpDown();
             this.chkRestrictSearchDepth = new System.Windows.Forms.CheckBox();
-            this.radCustom = new System.Windows.Forms.RadioButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.radCustom = new System.Windows.Forms.RadioButton();
             this.grpClock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMoves)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinutes)).BeginInit();
@@ -482,13 +486,13 @@ namespace SharpChess
             // 
             // grpCustom
             // 
-            this.grpCustom.Controls.Add(this.checkBox1);
             this.grpCustom.Controls.Add(this.chkUseRandomOpeningMoves);
             this.grpCustom.Controls.Add(this.label5);
             this.grpCustom.Controls.Add(this.numMaximumSearchDepth);
             this.grpCustom.Controls.Add(this.chkRestrictSearchDepth);
             this.grpCustom.Controls.Add(this.grpClock);
             this.grpCustom.Controls.Add(this.chkEnablePondering);
+            this.grpCustom.Controls.Add(this.checkBox1);
             this.grpCustom.Enabled = false;
             this.grpCustom.Location = new System.Drawing.Point(16, 112);
             this.grpCustom.Name = "grpCustom";
@@ -546,15 +550,6 @@ namespace SharpChess
             this.chkRestrictSearchDepth.Text = "Restrict search depth to";
             this.chkRestrictSearchDepth.CheckedChanged += new System.EventHandler(this.chkRestrictSearchDepth_CheckedChanged);
             // 
-            // radCustom
-            // 
-            this.radCustom.Location = new System.Drawing.Point(24, 104);
-            this.radCustom.Name = "radCustom";
-            this.radCustom.Size = new System.Drawing.Size(64, 24);
-            this.radCustom.TabIndex = 17;
-            this.radCustom.Text = "Custom";
-            this.radCustom.CheckedChanged += new System.EventHandler(this.radCustom_CheckedChanged);
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -564,11 +559,21 @@ namespace SharpChess
             this.checkBox1.TabIndex = 13;
             this.checkBox1.Text = "960 Mode";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // radCustom
+            // 
+            this.radCustom.Location = new System.Drawing.Point(24, 104);
+            this.radCustom.Name = "radCustom";
+            this.radCustom.Size = new System.Drawing.Size(64, 24);
+            this.radCustom.TabIndex = 17;
+            this.radCustom.Text = "Custom";
+            this.radCustom.CheckedChanged += new System.EventHandler(this.radCustom_CheckedChanged);
             // 
             // frmDifficulty
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(467, 398);
+            this.ClientSize = new System.Drawing.Size(502, 426);
             this.Controls.Add(this.lblLevel);
             this.Controls.Add(this.radLevel);
             this.Controls.Add(this.radCustom);
@@ -624,6 +629,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = true;
                     this.numMaximumSearchDepth.Value = 1;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 2:
@@ -632,6 +638,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = true;
                     this.numMaximumSearchDepth.Value = 2;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 3:
@@ -640,6 +647,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = true;
                     this.numMaximumSearchDepth.Value = 3;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 4:
@@ -648,6 +656,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = true;
                     this.numMaximumSearchDepth.Value = 4;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 5:
@@ -656,6 +665,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = true;
                     this.numMaximumSearchDepth.Value = 5;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 6:
@@ -664,6 +674,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = true;
                     this.numMaximumSearchDepth.Value = 6;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 7:
@@ -672,6 +683,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = true;
                     this.numMaximumSearchDepth.Value = 7;
                     this.chkEnablePondering.Checked = true;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 8:
@@ -680,6 +692,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = true;
                     this.numMaximumSearchDepth.Value = 8;
                     this.chkEnablePondering.Checked = true;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 9:
@@ -688,6 +701,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = false;
                     this.numMaximumSearchDepth.Value = 32;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 10:
@@ -696,6 +710,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = false;
                     this.numMaximumSearchDepth.Value = 32;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 11:
@@ -704,6 +719,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = false;
                     this.numMaximumSearchDepth.Value = 32;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 12:
@@ -712,6 +728,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = false;
                     this.numMaximumSearchDepth.Value = 32;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 13:
@@ -720,6 +737,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = false;
                     this.numMaximumSearchDepth.Value = 32;
                     this.chkEnablePondering.Checked = false;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 14:
@@ -728,6 +746,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = false;
                     this.numMaximumSearchDepth.Value = 32;
                     this.chkEnablePondering.Checked = true;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 15:
@@ -736,6 +755,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = false;
                     this.numMaximumSearchDepth.Value = 32;
                     this.chkEnablePondering.Checked = true;
+                    this.checkBox1.Checked = false;
                     break;
 
                 case 16:
@@ -744,6 +764,7 @@ namespace SharpChess
                     this.chkRestrictSearchDepth.Checked = false;
                     this.numMaximumSearchDepth.Value = 32;
                     this.chkEnablePondering.Checked = true;
+                    this.checkBox1.Checked = false;
                     break;
             }
         }
@@ -828,6 +849,7 @@ namespace SharpChess
             this.numMaximumSearchDepth.Value = Math.Max(Game.MaximumSearchDepth, 1);
             this.chkEnablePondering.Checked = Game.EnablePondering;
             this.chkUseRandomOpeningMoves.Checked = Game.UseRandomOpeningMoves;
+            this.checkBox1.Checked = Game.GameMode960On;
             this.SetFormState();
         }
 
@@ -932,5 +954,9 @@ namespace SharpChess
 
         #endregion
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            this.SetFormState();
+        }
     }
 }

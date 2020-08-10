@@ -4254,6 +4254,11 @@
             The set pieces at starting positions.
             </summary>
         </member>
+        <member name="M:SharpChess.Model.Player.SetPiecesAtStartingPositionsRandom">
+            <summary>
+            the set peices at random positions
+            </summary>
+        </member>
         <member name="T:SharpChess.Model.PlayerBlack">
             <summary>
             The player black.
@@ -4277,6 +4282,11 @@
         <member name="P:SharpChess.Model.PlayerBlack.PawnForwardOffset">
             <summary>
             Gets PawnForwardOffset.
+            </summary>
+        </member>
+        <member name="M:SharpChess.Model.PlayerBlack.SetPiecesAtStartingPositionsRandom">
+            <summary>
+            960 mode
             </summary>
         </member>
         <member name="M:SharpChess.Model.PlayerBlack.SetPiecesAtStartingPositions">
@@ -4440,6 +4450,11 @@
         <member name="P:SharpChess.Model.PlayerWhite.PawnForwardOffset">
             <summary>
             Gets PawnForwardOffset.
+            </summary>
+        </member>
+        <member name="M:SharpChess.Model.PlayerWhite.SetPiecesAtStartingPositionsRandom">
+            <summary>
+            Starts the board in 960 mode
             </summary>
         </member>
         <member name="M:SharpChess.Model.PlayerWhite.SetPiecesAtStartingPositions">

@@ -51,6 +51,7 @@ namespace SharpChess.Model
             this._PieceTypes = new List<Piece.PieceNames>();
             this.CapturedEnemyPieces = new Pieces();
             this.Brain = new Brain(this);
+            this.Mode960 = true;
         }
 
         protected Player(bool M960)
@@ -897,8 +898,10 @@ namespace SharpChess.Model
         /// <summary>
         /// The set pieces at starting positions.
         /// </summary>
-        protected abstract void SetPiecesAtStartingPositions();
-
+        //protected abstract void SetPiecesAtStartingPositions();-------------------------------
+        /// <summary>
+        /// the set peices at random positions
+        /// </summary>
         protected abstract void SetPiecesAtStartingPositionsRandom();
 
         #endregion
