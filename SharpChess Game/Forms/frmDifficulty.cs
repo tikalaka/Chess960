@@ -74,6 +74,7 @@ namespace SharpChess
         /// </summary>
         private CheckBox chkUseRandomOpeningMoves;
 
+
         /// <summary>
         /// The grp clock.
         /// </summary>
@@ -556,7 +557,6 @@ namespace SharpChess
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoCheck = false;
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(260, 128);
             this.checkBox1.Name = "checkBox1";
@@ -564,7 +564,6 @@ namespace SharpChess
             this.checkBox1.TabIndex = 13;
             this.checkBox1.Text = "960 Mode";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // frmDifficulty
             // 
@@ -783,7 +782,7 @@ namespace SharpChess
             Game.MaximumSearchDepth = this.chkRestrictSearchDepth.Checked ? (int)this.numMaximumSearchDepth.Value : 0;
             Game.EnablePondering = this.chkEnablePondering.Checked;
             Game.UseRandomOpeningMoves = this.chkUseRandomOpeningMoves.Checked;
-
+            Game.GameMode960On = this.checkBox1.Checked;
             this.m_blnConfirmed = true;
 
             this.Close();
@@ -933,9 +932,5 @@ namespace SharpChess
 
         #endregion
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

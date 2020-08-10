@@ -53,6 +53,18 @@ namespace SharpChess.Model
             this.Brain = new Brain(this);
         }
 
+        protected Player(bool M960)
+        {
+            this.Clock = new PlayerClock();
+            this.MaterialCount = 7;
+            this.PawnCountInPlay = 8;
+            this.Pieces = new Pieces();
+            this._PieceTypes = new List<Piece.PieceNames>();
+            this.CapturedEnemyPieces = new Pieces();
+            this.Brain = new Brain(this);
+            this.Mode960 = M960;
+        }
+
         #endregion
 
         #region Enums
@@ -127,6 +139,9 @@ namespace SharpChess.Model
         ///   Gets the player's chess brain. Contains all computer AI chess logic.
         /// </summary>
         public Brain Brain { get; private set; }
+
+        
+        public bool Mode960 { get; private set; }
 
         /// <summary>
         ///   Gets a value indicating whether the player can claim a fifty-nove draw.

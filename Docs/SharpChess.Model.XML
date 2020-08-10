@@ -1929,6 +1929,11 @@
               Gets or sets game Difficulty Level.
             </summary>
         </member>
+        <member name="P:SharpChess.Model.Game.GameMode960On">
+            <summary>
+                Sets the mode to 960 mode if true----------------------------------------------------------------------
+            </summary>
+        </member>
         <member name="P:SharpChess.Model.Game.EditModeActive">
             <summary>
               Gets a value indicating whether Edit Mode is Active.
@@ -4415,6 +4420,12 @@
             <summary>
             Initializes a new instance of the <see cref="T:SharpChess.Model.PlayerWhite"/> class.
             </summary>
+        </member>
+        <member name="M:SharpChess.Model.PlayerWhite.#ctor(System.Boolean)">
+            <summary>
+            Constructor for the randomized gamemode
+            </summary>
+            <param name="gameMode960On"></param>
         </member>
         <member name="P:SharpChess.Model.PlayerWhite.PawnAttackLeftOffset">
             <summary>

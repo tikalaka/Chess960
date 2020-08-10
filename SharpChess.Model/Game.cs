@@ -78,8 +78,8 @@ namespace SharpChess.Model
             HashTablePawn.Initialise();
             HashTableCheck.Initialise();
 
-            PlayerWhite = new PlayerWhite();
-            PlayerBlack = new PlayerBlack();
+            PlayerWhite = new PlayerWhite(GameMode960On);
+            PlayerBlack = new PlayerBlack(GameMode960On);
             PlayerToPlay = PlayerWhite;
             Board.EstablishHashKey();
             OpeningBookSimple.Initialise();
@@ -261,7 +261,7 @@ namespace SharpChess.Model
         public static int DifficultyLevel { get; set; }
 
         /// <summary>
-        ///     Sets the mode to 960 mode if true---------------------------------------------
+        ///     Sets the mode to 960 mode if true----------------------------------------------------------------------
         /// </summary>
         public static bool GameMode960On { get; set; }
 

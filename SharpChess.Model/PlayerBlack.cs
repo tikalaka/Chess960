@@ -41,11 +41,19 @@ namespace SharpChess.Model
         {
             this.Colour = PlayerColourNames.Black;
             this.Intellegence = PlayerIntellegenceNames.Computer;
-            if (true)
+        }
+
+        public PlayerBlack(bool gameMode960On)
+        {
+            this.Colour = PlayerColourNames.Black;
+            this.Intellegence = PlayerIntellegenceNames.Computer;
+            this.gameMode960On = gameMode960On;
+            if (!gameMode960On)
             {
                 this.SetPiecesAtStartingPositions();
             }
-            else{
+            else
+            {
                 this.SetPiecesAtStartingPositionsRandom();
             }
         }
@@ -88,6 +96,7 @@ namespace SharpChess.Model
         }
 
         public static int[] usedPositions = { 0, 0, 0, 0, 0, 0, 0, 0 };
+        private bool gameMode960On;
 
         #endregion
 

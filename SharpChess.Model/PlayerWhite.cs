@@ -41,8 +41,17 @@ namespace SharpChess.Model
         {
             this.Colour = PlayerColourNames.White;
             this.Intellegence = PlayerIntellegenceNames.Human;
-
-            if (true)
+        }
+        /// <summary>
+        /// Constructor for the randomized gamemode
+        /// </summary>
+        /// <param name="gameMode960On"></param>
+        public PlayerWhite(bool gameMode960On)
+        {
+            this.Colour = PlayerColourNames.White;
+            this.Intellegence = PlayerIntellegenceNames.Human;
+            this.gameMode960On = gameMode960On;
+            if (!gameMode960On)
             {
                 this.SetPiecesAtStartingPositions();
             }
@@ -90,6 +99,7 @@ namespace SharpChess.Model
         }
 
         public static int[] usedPositions = {0,0,0,0,0,0,0,0};
+        private bool gameMode960On;
 
         #endregion
 
