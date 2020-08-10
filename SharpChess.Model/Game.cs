@@ -261,6 +261,11 @@ namespace SharpChess.Model
         public static int DifficultyLevel { get; set; }
 
         /// <summary>
+        ///     Sets the mode to 960 mode if true---------------------------------------------
+        /// </summary>
+        public static bool GameMode960On { get; set; }
+
+        /// <summary>
         ///   Gets a value indicating whether Edit Mode is Active.
         /// </summary>
         public static bool EditModeActive { get; private set; }
